@@ -20,6 +20,8 @@ var myHeaders = new Headers({
   "Access-Control-Allow-Origin": "*, *",
 });
 
+
+
 export default class Example extends Component {
 constructor(props) {
     super(props);
@@ -43,15 +45,15 @@ constructor(props) {
       }
     ]
   }
-  
-  componentWillMount(){
+  grabData(){
     const {series, ticker} = this.state;
-      var result = []
-      var myInit = {method: 'GET',
-                    headers: myHeaders,
-                    mode: 'cors',
-                    cache: 'force-cache' };
-    fetch('https://www.quandl.com/api/v3/datasets/WIKI/'+ ticker +'/data.json?api_key=UXBsxuWqVeC2jAzbA9xe', myInit)
+    var result = []
+    var myInit = {method: 'GET',
+                  headers: myHeaders,
+                  mode: 'cors',
+                  cache: 'force-cache' };
+    var url = 'https://www.quandl.com/api/v3/datasets/WIKI/'+ ticker +'/data.json?api_key=UXBsxuWqVeC2jAzbA9xe'
+    fetch(url, myInit)
     .then(res => res.json())
     .then(response =>{
       var arr = response.dataset_data.data.reverse()
@@ -65,9 +67,21 @@ constructor(props) {
       s.data = result;
       });
       this.setState({series})
-      console.log(series)
-    })}
-  
+  })}
+
+  componentDidMount(){
+      this.grabData()
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+          const {ticker, series} = this.state;
+          console.log(ticker)
+          if(ticker != prevState.ticker){
+            this.grabData()
+            this.setState({ticker})
+          }
+  }
+
 
   /**
    * Event handler for onNearestX.
