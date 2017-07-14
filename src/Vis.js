@@ -2,28 +2,19 @@ import React, { Component } from 'react'
 import './App.css'
 import {XYPlot, XAxis, YAxis, VerticalGridLines, HorizontalGridLines, LineSeries, Crosshair} from 'react-vis';
 
+
 var myHeaders = new Headers({
   "Access-Control-Allow-Origin": "*, *",
 });
-const DATA = [
-  [
-    {x: 1, y: 10},
-    {x: 2, y: 7},
-    {x: 3, y: 15}
-  ],
-  [
-    {x: 1, y: 20},
-    {x: 2, y: 5},
-    {x: 3, y: 15}
-  ]
-];
+
 
 export default class Vis extends Component {
   state = {
     crosshairValues: [],
     heldValue: false
   }
-componentDidMount(){
+
+componentWillMount(){
     var data = []
     var myInit = {method: 'GET',
                   headers: myHeaders,
@@ -44,17 +35,10 @@ componentDidMount(){
   })}
 
   render() {
-    const {crosshairValues, heldValue} = this.state;
+    const {crosshairValues, data} = this.state;
     return (
       <div>
         <XYPlot
-          onMouseDown={() => {
-            if (heldValue) {
-              this.setState({heldValue: false});
-              return;
-            }
-            this.setState({heldValue: crosshairValues});
-          }}
           xType="time"
           onMouseLeave={() => this.setState({crosshairValues: []})}
           width={1200}
@@ -70,10 +54,11 @@ componentDidMount(){
             data={DATA[0]}/>*/}
           <LineSeries 
             onNearestX={(value, {index}) => {
-              this.setState({crosshairValues: this.state.data.map(d => d[index])});
+              this.setState({crosshairValues: data.map(d => d[index])});
             }}
-            data={this.state.data}/>
-          <Crosshair values={heldValue || crosshairValues}/>
+            data={data}/>
+          <Crosshair 
+          values={crosshairValues}/>
         </XYPlot>
       </div>
     );
