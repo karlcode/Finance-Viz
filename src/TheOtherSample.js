@@ -26,7 +26,6 @@ export default class Example extends Component {
 constructor(props) {
     super(props);
 
-    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   state = {
@@ -124,10 +123,10 @@ constructor(props) {
    * @private
    */
   _formatCrosshairItems = (values) => {
-    const {series} = this.state;
+    const {series, ticker} = this.state;
     return values.map((v, i) => {
       return {
-        title: series[i].title,
+        title: ticker,
         value: v.y
       };
     });
@@ -145,14 +144,11 @@ constructor(props) {
     this.setState({series});
   }
   handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.ticker);
-    this.setState({ticker: 'AAPL'})
+    this.setState({ticker: this.element.value})
     event.preventDefault();
 
   }
-  handleChange(event) {
-    this.setState({ticker: event.target.value});
-  }
+
   render() {
     const {forFrontPage} = this.props;
     const {series, crosshairValues} = this.state;
@@ -191,7 +187,7 @@ constructor(props) {
      <form onSubmit={this.handleSubmit}>
         <label>
           Enter a symbol {this.state.ticker}:
-          <input type="text"/>
+          <input type="text" ref={el => this.element = el}/>
         </label>
         <input type="submit" value="Submit"  />
       </form>
