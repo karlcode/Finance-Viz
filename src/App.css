@@ -253,3 +253,9 @@
 
 #blue {
   background-color: lightblue; }
+
+.news {
+  position: fixed;
+  right: 0;
+  max-width: 300px;
+  height: 100vh; }

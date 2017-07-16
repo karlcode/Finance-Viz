@@ -57,7 +57,8 @@ constructor(props) {
     .then(response =>{
       var arr = response.dataset_data.data.reverse()
       //for (var i=1200;i<arr.length;i++){
-        for (var i=arr.length-30;i<arr.length;i++){
+      //for (var i=arr.length-30;i<arr.length;i++){
+        for (var i=arr.length-300;i<arr.length;i++){
         var x = Date.parse(arr[i][0])
         var y = arr[i][4]
         result.push({x, y})
@@ -75,7 +76,7 @@ constructor(props) {
   componentDidUpdate(prevProps, prevState) {
           const {ticker, series} = this.state;
           console.log(ticker)
-          if(ticker != prevState.ticker){
+          if(ticker !== prevState.ticker){
             this.grabData()
             this.setState({ticker})
           }
