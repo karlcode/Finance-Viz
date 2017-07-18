@@ -162,7 +162,7 @@ class App extends Component {
             width={180}
             items={series}/>
         </div>)}
-
+      <News ticker={this.state.ticker}/>
         <div className="chart">
           <FlexibleXYPlot
             xType="time"
@@ -193,7 +193,7 @@ class App extends Component {
         </label>
         <input type="submit" value="Submit"  />
       </form>
-      <News/>
+      
       </div>
     );
   }
