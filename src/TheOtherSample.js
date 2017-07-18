@@ -74,12 +74,12 @@ constructor(props) {
   }
 
   componentDidUpdate(prevProps, prevState) {
-          const {ticker, series} = this.state;
-          console.log(ticker)
-          if(ticker !== prevState.ticker){
-            this.grabData()
-            this.setState({ticker})
-          }
+      const {ticker, series} = this.state;
+      console.log(ticker)
+      if(ticker !== prevState.ticker){
+        this.grabData()
+        this.setState({ticker})
+      }
   }
 
 
