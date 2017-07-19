@@ -15,11 +15,11 @@ state = {
   }
 grabNews(){
     var result = []
-    const {title, date} = this.state;
+    const {title, date, series} = this.state;
     var username = "62f863e182736402fd729bc2dcdfa160";
     var password = "e7ae8da36d32633febfac0b6b295b45b";
     var auth = "Basic " + new Buffer(username + ':' + password).toString('base64');
-    var url = 'https://api.intrinio.com/press_releases?identifier=FB'
+    var url = 'https://api.intrinio.com/press_releases?identifier='+ this.props.ticker
     var myInit = {method: 'GET',
                   headers: {myHeaders,
                             "Authorization" : auth},
@@ -33,10 +33,10 @@ grabNews(){
         var date = response.data[i].publication_date
         result.push({title, date})
         }
-        console.log(result)
-        result.forEach(key => this.setState({title: key.title, 
-                                            date: key.date}))
- 
+        console.log(response)
+        //result.forEach(key => this.setState({title: key.title, 
+                                            //date: key.date}))
+        this.setState({series: result})   
     })
 }
     componentDidMount(){
@@ -44,14 +44,23 @@ grabNews(){
 
     }
 
+
 render() {
 const {ticker} = this.props;
-const {title, date} = this.state;
+const {title, date, series} = this.state;
     return (
       <div className="news">
         <h1>Latest news for {ticker}</h1>
-        <h6>{title}</h6>
-        <span>{date}</span>
+
+        {
+                series.map((key, i) => {
+                    return  <div className="cards" key={i} >
+                            <li>{key.title}</li>
+                            <li>{key.date}</li>
+                            </div>
+                })
+            }
+
       </div>
     );
   }
