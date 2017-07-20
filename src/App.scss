@@ -1,8 +1,9 @@
 @import "./node_modules/react-vis/dist/style";
-
+@import "https://fonts.googleapis.com/css?family=Source+Sans+Pro";
 .App {
   text-align: center;
   max-width: 1440px;
+font-family: 'Source Sans Pro', sans-serif;
 }
 
 .App-logo {

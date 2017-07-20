@@ -37,11 +37,6 @@ class App extends Component {
         title: 'AAPL',
         disabled: false,
         data: []
-      },
-      {
-        title: 'Bananas',
-        disabled: false,
-        data: []
       }
     ]
   }
@@ -112,8 +107,9 @@ class App extends Component {
    * @private
    */
   _formatCrosshairTitle = (values) => {
+    const {ticker} = this.state;
     return {
-      title: 'Date',
+      title: ticker+ ' Date',
       value: new Date(values[0].x).toUTCString().split(' ').slice(0, 4).join(' ')
     };
   }
@@ -128,8 +124,8 @@ class App extends Component {
     const {series, ticker} = this.state;
     return values.map((v, i) => {
       return {
-        title: ticker,
-        value: v.y
+        title: 'Closing Price',
+        value:  v.y + ' USD'
       };
     });
   }
@@ -183,10 +179,6 @@ class App extends Component {
               data={series[0].data}
               onNearestX={this._nearestXHandler}
               {...(series[0].disabled ? {opacity: 0.2} : null)}/>
-            <LineSeries
-              data={series[1].data}
-              curve="curveMonotoneX"
-              {...(series[1].disabled ? {opacity: 0.2} : null)}/>
             <Crosshair
               itemsFormat={this._formatCrosshairItems}
               titleFormat={this._formatCrosshairTitle}
