@@ -163,6 +163,13 @@ class App extends Component {
             items={series}/>
         </div>)}
       <News ticker={this.state.ticker}/>
+       <form onSubmit={this.handleSubmit}>
+        <label>
+          Enter a symbol {this.state.ticker}:
+          <input type="text" ref={el => this.element = el}/>
+        </label>
+        <input type="submit" value="Submit"  />
+      </form>
         <div className="chart">
           <FlexibleXYPlot
             xType="time"
@@ -186,13 +193,7 @@ class App extends Component {
               values={crosshairValues}/>
           </FlexibleXYPlot>
         </div>
-     <form onSubmit={this.handleSubmit}>
-        <label>
-          Enter a symbol {this.state.ticker}:
-          <input type="text" ref={el => this.element = el}/>
-        </label>
-        <input type="submit" value="Submit"  />
-      </form>
+    
       
       </div>
     );

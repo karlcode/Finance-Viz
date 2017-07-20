@@ -13,13 +13,13 @@ state = {
     date: '',
     }]
   }
-grabNews(){
+grabNews(props){
     var result = []
     const {title, date, series} = this.state;
     var username = "62f863e182736402fd729bc2dcdfa160";
     var password = "e7ae8da36d32633febfac0b6b295b45b";
     var auth = "Basic " + new Buffer(username + ':' + password).toString('base64');
-    var url = 'https://api.intrinio.com/press_releases?identifier='+ this.props.ticker
+    var url = 'https://api.intrinio.com/press_releases?identifier='+ props
     var myInit = {method: 'GET',
                   headers: {myHeaders,
                             "Authorization" : auth},
@@ -39,9 +39,15 @@ grabNews(){
         this.setState({series: result})   
     })
 }
-    componentDidMount(){
-        this.grabNews()
 
+    componentDidMount(){
+        this.grabNews(this.props.ticker)
+
+    }
+    componentWillReceiveProps(nextProps){
+        if (this.props.ticker !== nextProps.ticker){
+            this.grabNews(nextProps.ticker)
+        }
     }
 
 
