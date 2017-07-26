@@ -153,14 +153,15 @@ class App extends Component {
     return (
       <div className="App">
         
-      
-        {/*<form onSubmit={this.handleSubmit}>
-          <label>
-            Enter a symbol {this.state.ticker}:
-            <input type="text" ref={el => this.element = el}/>
-          </label>
-          <input type="submit" value="Submit"  />
-        </form>*/}
+        <div className="search">
+       
+        <form onSubmit={this.handleSubmit}>
+           <h1>Search for a stock ticker
+             <input type="text" ref={el => this.element = el}/>
+             <input type="submit" value="Submit"  />
+          </h1>
+        </form>
+        </div>
         
         <div className="chart">
           <FlexibleXYPlot
