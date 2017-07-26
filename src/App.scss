@@ -2,7 +2,8 @@
 @import "https://fonts.googleapis.com/css?family=Source+Sans+Pro";
 .App {
   text-align: center;
-  max-width: 1440px;
+  width: 100vw;
+  display: flex;
 font-family: 'Source Sans Pro', sans-serif;
 }
 
@@ -30,13 +31,14 @@ font-family: 'Source Sans Pro', sans-serif;
   background-color: lightblue;
 }
 .chart{
-  max-width: 1440px;
-  left: 0;
+  padding-left: 50px;
+  padding-top: 80px;
+  padding-right: 50px;
+  display: flex;
+  flex: 1;
 }
 .news{
   position: fixed;
-  z-index: 2;
-  top: 0;
   right: 0;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   max-width: 400px;
@@ -44,6 +46,7 @@ font-family: 'Source Sans Pro', sans-serif;
   background-color: white;
   overflow: auto;
 }
+
 .cards{
   list-style: none;
   text-align: left;

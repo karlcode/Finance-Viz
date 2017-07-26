@@ -109,7 +109,7 @@ class App extends Component {
   _formatCrosshairTitle = (values) => {
     const {ticker} = this.state;
     return {
-      title: ticker+ ' Date',
+      title: ticker + ' Date',
       value: new Date(values[0].x).toUTCString().split(' ').slice(0, 4).join(' ')
     };
   }
@@ -152,20 +152,16 @@ class App extends Component {
     const {series, crosshairValues} = this.state;
     return (
       <div className="App">
-        {!forFrontPage && (<div className="legend">
-          <DiscreteColorLegend
-            onItemClick={this._legendClickHandler}
-            width={180}
-            items={series}/>
-        </div>)}
-      <News ticker={this.state.ticker}/>
-       <form onSubmit={this.handleSubmit}>
-        <label>
-          Enter a symbol {this.state.ticker}:
-          <input type="text" ref={el => this.element = el}/>
-        </label>
-        <input type="submit" value="Submit"  />
-      </form>
+        
+      
+        {/*<form onSubmit={this.handleSubmit}>
+          <label>
+            Enter a symbol {this.state.ticker}:
+            <input type="text" ref={el => this.element = el}/>
+          </label>
+          <input type="submit" value="Submit"  />
+        </form>*/}
+        
         <div className="chart">
           <FlexibleXYPlot
             xType="time"
@@ -185,7 +181,8 @@ class App extends Component {
               values={crosshairValues}/>
           </FlexibleXYPlot>
         </div>
-    
+        <News ticker={this.state.ticker}/>
+  
       
       </div>
     );
