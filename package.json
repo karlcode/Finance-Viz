@@ -6,6 +6,7 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-scripts": "1.0.10",
+    "react-select": "^1.0.0-rc.5",
     "react-vis": "^1.6.7"
   },
   "scripts": {

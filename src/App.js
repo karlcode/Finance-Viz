@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
+import Select from 'react-select';
 
+// Be sure to include styles at some point, probably during your bootstrapping
+import 'react-select/dist/react-select.css';
 
 
 import News from './News'
@@ -146,10 +149,18 @@ class App extends Component {
     event.preventDefault();
 
   }
+  logChange = (val) => {
+  console.log("Selected: " + JSON.stringify(val));
+}
 
   render() {
     const {forFrontPage} = this.props;
     const {series, crosshairValues} = this.state;
+    var options = [
+  { value: 'one', label: 'One' },
+  { value: 'two', label: 'Two' }
+  ];
+
     return (
       <div className="App">
         
@@ -157,8 +168,14 @@ class App extends Component {
        
         <form onSubmit={this.handleSubmit}>
            <h1>Search for a stock ticker
-             <input type="text" ref={el => this.element = el}/>
-             <input type="submit" value="Submit"  />
+             <Select
+              className="selector"
+              name="form-field-name"
+              value="one"
+              options = {options}
+              onChange={this.logChange.bind(this)}
+            />
+             
           </h1>
         </form>
         </div>
