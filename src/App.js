@@ -4,8 +4,7 @@ import Select from 'react-select';
 
 // Be sure to include styles at some point, probably during your bootstrapping
 import 'react-select/dist/react-select.css';
-
-
+import { push as Menu} from 'react-burger-menu';
 import News from './News'
 import PropTypes from 'prop-types';
 
@@ -150,37 +149,44 @@ class App extends Component {
 
   }
   logChange = (val) => {
+    this.setState({ticker: val.value})
   console.log("Selected: " + JSON.stringify(val));
 }
+showSettings (event) {
+    event.preventDefault();
+
+  }
 
   render() {
     const {forFrontPage} = this.props;
     const {series, crosshairValues} = this.state;
     var options = [
   { value: 'TSLA', label: 'Tesla' },
-  { value: 'aapl', label: 'Apple' }
+  { value: 'AAPL', label: 'Apple' },
+  { value: 'GOOG', label: 'Alphabet Inc (Google)' },
+  { value: 'MSFT', label: 'Microsoft' },
+  { value: 'FB', label: 'Facebook' },
+  { value: 'ORCL', label: 'Oracle' },
+  { value: 'INTC', label: 'Intel' },
+  { value: 'CSCO', label: 'Cisco' },
+  { value: 'IBM', label: 'IBM' },
+  { value: 'BIDU', label: 'Baidu' }
   ];
 
     return (
-      <div className="App">
-        
+      <div className="App" id="outer-container">
+         <Menu pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } />
         <div className="search">
        
         <form onSubmit={this.handleSubmit}>
-           <h1>Search for a stock ticker
-             <Select
-              className="selector"
-              name="form-field-name"
-              value="TSLA"
-              options = {options}
-              onChange={this.logChange.bind(this)}
-            />
+           <h1>Search for a stock ticker</h1>
              
-          </h1>
+             
+          
         </form>
         </div>
         
-        <div className="chart">
+        <div className="chart" id="page-wrap">
           <FlexibleXYPlot
             xType="time"
             animation
@@ -201,7 +207,7 @@ class App extends Component {
         </div>
         <News ticker={this.state.ticker}/>
   
-      
+   
       </div>
     );
   }

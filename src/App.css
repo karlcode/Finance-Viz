@@ -1,4 +1,5 @@
 @import "https://fonts.googleapis.com/css?family=Source+Sans+Pro";
+@import "https://unpkg.com/react-select/dist/react-select.css";
 .rv-treemap {
   font-size: 12px;
   position: relative; }
@@ -265,7 +266,7 @@
 
 .news {
   display: none;
-  z-index: 3;
+  z-index: 0;
   position: fixed;
   right: 0;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
@@ -293,3 +294,6 @@
 .selector {
   width: 200px;
   position: fixed; }
+
+.bm-menu-wrap {
+  background-color: grey; }

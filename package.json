@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "react": "^15.6.1",
+    "react-burger-menu": "^2.1.4",
     "react-dom": "^15.6.1",
     "react-scripts": "1.0.10",
     "react-select": "^1.0.0-rc.5",
