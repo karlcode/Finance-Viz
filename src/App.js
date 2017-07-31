@@ -157,8 +157,8 @@ class App extends Component {
     const {forFrontPage} = this.props;
     const {series, crosshairValues} = this.state;
     var options = [
-  { value: 'one', label: 'One' },
-  { value: 'two', label: 'Two' }
+  { value: 'TSLA', label: 'Tesla' },
+  { value: 'aapl', label: 'Apple' }
   ];
 
     return (
@@ -171,7 +171,7 @@ class App extends Component {
              <Select
               className="selector"
               name="form-field-name"
-              value="one"
+              value="TSLA"
               options = {options}
               onChange={this.logChange.bind(this)}
             />
