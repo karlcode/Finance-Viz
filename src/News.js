@@ -55,7 +55,7 @@ render() {
 const {ticker} = this.props;
 const {title, date, series} = this.state;
     return (
-      <div className="news">
+      <a>
         <h1>Latest news for {ticker}</h1>
 
         {
@@ -68,7 +68,7 @@ const {title, date, series} = this.state;
                 })
             }
 
-      </div>
+      </a>
     );
   }
 }

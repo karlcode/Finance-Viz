@@ -176,17 +176,16 @@ showSettings (event) {
 
     return (
       <div className="App" id="outer-container">
-         <LeftMenu pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } styles={left}/>
-         <RightMenu right pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } styles={right}/>
-        {/*<div className="search">
-       
-        <form onSubmit={this.handleSubmit}>
-           <h1>Search for a stock ticker</h1>
-             
-             
-          
-        </form>
-        </div>*/}
+         
+        <div className="search">
+          <LeftMenu pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } styles={left}/>
+          <RightMenu right pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } styles={right}>
+            <News ticker={this.state.ticker}/>
+          </RightMenu>
+          <form onSubmit={this.handleSubmit}>
+            <h1>Search for a stock ticker</h1>
+          </form>
+        </div>
         
         <div className="chart" id="page-wrap">
           <FlexibleXYPlot
@@ -207,7 +206,7 @@ showSettings (event) {
               values={crosshairValues}/>
           </FlexibleXYPlot>
         </div>
-        <News ticker={this.state.ticker}/>
+        
   
    
       </div>
