@@ -4,10 +4,11 @@ import Select from 'react-select';
 
 // Be sure to include styles at some point, probably during your bootstrapping
 import 'react-select/dist/react-select.css';
-import { push as Menu} from 'react-burger-menu';
+import { push as LeftMenu, push as RightMenu  } from 'react-burger-menu';
 import News from './News'
 import PropTypes from 'prop-types';
-
+import left from './leftmenustyle'
+import right from './rightmenustyle'
 import {
   XYPlot,
   XAxis,
@@ -175,8 +176,9 @@ showSettings (event) {
 
     return (
       <div className="App" id="outer-container">
-         <Menu pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } />
-        <div className="search">
+         <LeftMenu pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } styles={left}/>
+         <RightMenu right pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } styles={right}/>
+        {/*<div className="search">
        
         <form onSubmit={this.handleSubmit}>
            <h1>Search for a stock ticker</h1>
@@ -184,7 +186,7 @@ showSettings (event) {
              
           
         </form>
-        </div>
+        </div>*/}
         
         <div className="chart" id="page-wrap">
           <FlexibleXYPlot
