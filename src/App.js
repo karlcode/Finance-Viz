@@ -33,6 +33,7 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   state = {
+    menuOpen: false,
     crosshairValues: [],
     ticker: 'TSLA',
     series: [
@@ -159,7 +160,8 @@ class App extends Component {
 
   }
   _clicked = (e)=>{
-    this.setState({ticker: e.value})
+    this.setState({ticker: e.value,
+                    menuOpen: false})
   }
   
   render() {
@@ -182,7 +184,7 @@ class App extends Component {
       <div className="App" id="outer-container">
          
         <div className="search">
-          <LeftMenu pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } styles={left}>
+          <LeftMenu isOpen={ this.state.menuOpen } pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } styles={left}>
             {
             options.map((key, i) => {
                 return  <div className="cards" key={key.value} onClick={this._clicked.bind(this, key)} >
@@ -195,9 +197,9 @@ class App extends Component {
           <RightMenu right pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } styles={right}>
             <News ticker={this.state.ticker}/>
           </RightMenu>
-          <form onSubmit={this.handleSubmit}>
-            <h1>Search for a stock ticker</h1>
-          </form>
+          
+            <h1>{this.state.ticker}</h1>
+          
         </div>
         
         <div className="chart" id="page-wrap">

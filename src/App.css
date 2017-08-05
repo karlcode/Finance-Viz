@@ -280,7 +280,8 @@
   text-align: left;
   max-width: 400px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  padding: 40px; }
+  padding: 40px;
+  cursor: pointer; }
 
 .search {
   position: fixed;
