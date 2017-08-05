@@ -39,7 +39,8 @@ class App extends Component {
       {
         title: 'AAPL',
         disabled: false,
-        data: []
+        data: [],
+        
       }
     ]
   }
@@ -152,12 +153,15 @@ class App extends Component {
   logChange = (val) => {
     this.setState({ticker: val.value})
   console.log("Selected: " + JSON.stringify(val));
-}
-showSettings (event) {
-    event.preventDefault();
+  }
+  showSettings (event) {
+      event.preventDefault();
 
   }
-
+  _clicked = (e)=>{
+    this.setState({ticker: e.value})
+  }
+  
   render() {
     const {forFrontPage} = this.props;
     const {series, crosshairValues} = this.state;
@@ -178,7 +182,16 @@ showSettings (event) {
       <div className="App" id="outer-container">
          
         <div className="search">
-          <LeftMenu pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } styles={left}/>
+          <LeftMenu pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } styles={left}>
+            {
+            options.map((key, i) => {
+                return  <div className="cards" key={key.value} onClick={this._clicked.bind(this, key)} >
+                        <li><b>{key.value}</b></li>
+                        <li>{key.label}</li>
+                        </div>
+            })
+            }
+          </LeftMenu>
           <RightMenu right pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } styles={right}>
             <News ticker={this.state.ticker}/>
           </RightMenu>

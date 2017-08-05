@@ -57,17 +57,14 @@ const {title, date, series} = this.state;
     return (
       <a>
         <h1>Latest news for {ticker}</h1>
-
         {
-                series.map((key, i) => {
-                    return  <div className="cards" key={i} >
-                            <li><b>{key.date}</b></li>
-                            <li>{key.title}</li>
-                            
-                            </div>
-                })
-            }
-
+            series.map((key, i) => {
+                return  <div className="cards" key={i} >
+                        <li><b>{key.date}</b></li>
+                        <li>{key.title}</li>
+                        </div>
+            })
+        }
       </a>
     );
   }
