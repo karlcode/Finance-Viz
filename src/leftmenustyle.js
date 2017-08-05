@@ -3,14 +3,14 @@ export default {
     position: 'fixed',
     width: '36px',
     height: '30px',
-    left: '36px',
-    top: '36px'
+    left: '5px',
+    top: '50%'
   },
   bmBurgerBars: {
     background: '#373a47'
   },
   bmMenu: {
-    background: 'white',
+    background: '#F4F7F6',
     padding: '2.5em 1.5em 0',
     fontSize: '1.15em',
   },

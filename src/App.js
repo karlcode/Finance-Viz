@@ -36,6 +36,7 @@ class App extends Component {
     menuOpen: false,
     crosshairValues: [],
     ticker: 'TSLA',
+    title: '',
     series: [
       {
         title: 'AAPL',
@@ -52,14 +53,15 @@ class App extends Component {
                   headers: myHeaders,
                   mode: 'cors',
                   cache: 'force-cache' };
-    var url = 'https://www.quandl.com/api/v3/datasets/WIKI/'+ ticker +'/data.json?api_key=UXBsxuWqVeC2jAzbA9xe'
+    var url = 'https://www.quandl.com/api/v3/datasets/WIKI/'+ ticker +'.json?api_key=UXBsxuWqVeC2jAzbA9xe'
     fetch(url, myInit)
     .then(res => res.json())
     .then(response =>{
-      var arr = response.dataset_data.data.reverse()
+      console.log(response.dataset)
+      var arr = response.dataset.data.reverse()
       //for (var i=1200;i<arr.length;i++){
       //for (var i=arr.length-30;i<arr.length;i++){
-        for (var i=arr.length-300;i<arr.length;i++){
+        for (var i=arr.length-253;i<arr.length;i++){
         var x = Date.parse(arr[i][0])
         var y = arr[i][4]
         result.push({x, y})
@@ -68,6 +70,8 @@ class App extends Component {
       s.data = result;
       });
       this.setState({series})
+      var title = response.dataset.name.replace("Prices, Dividends, Splits and Trading Volume", '')
+      this.setState({title: title })
   })}
 
   componentDidMount(){
@@ -198,7 +202,7 @@ class App extends Component {
             <News ticker={this.state.ticker}/>
           </RightMenu>
           
-            <h1>{this.state.ticker}</h1>
+            <h1>{this.state.title}</h1>
           
         </div>
         
