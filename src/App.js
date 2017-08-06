@@ -4,7 +4,7 @@ import Select from 'react-select';
 
 // Be sure to include styles at some point, probably during your bootstrapping
 import 'react-select/dist/react-select.css';
-import { push as LeftMenu, push as RightMenu  } from 'react-burger-menu';
+import { scaleRotate as LeftMenu, scaleRotate as RightMenu  } from 'react-burger-menu';
 import News from './News'
 import PropTypes from 'prop-types';
 import left from './leftmenustyle'
@@ -172,22 +172,25 @@ class App extends Component {
     const {forFrontPage} = this.props;
     const {series, crosshairValues} = this.state;
     var options = [
-  { value: 'TSLA', label: 'Tesla' },
-  { value: 'AAPL', label: 'Apple' },
-  { value: 'GOOG', label: 'Alphabet Inc (Google)' },
-  { value: 'MSFT', label: 'Microsoft' },
-  { value: 'FB', label: 'Facebook' },
-  { value: 'ORCL', label: 'Oracle' },
-  { value: 'INTC', label: 'Intel' },
-  { value: 'CSCO', label: 'Cisco' },
-  { value: 'IBM', label: 'IBM' },
-  { value: 'BIDU', label: 'Baidu' }
+  { value: 'TSLA', label: 'Tesla Motors Inc.' },
+  { value: 'AAPL', label: 'Apple Inc.' },
+  { value: 'GOOG', label: 'Alphabet Inc. (Google)' },
+  { value: 'MSFT', label: 'Microsoft Corporation' },
+  { value: 'FB', label: 'Facebook Inc.' },
+  { value: 'ORCL', label: 'Oracle Corp.' },
+  { value: 'INTC', label: 'Intel Corp.' },
+  { value: 'CSCO', label: 'Cisco Systems Inc.' },
+  { value: 'IBM', label: 'International Business Machines Corp.' },
+  { value: 'BIDU', label: 'Baidu Inc. ADS' }
   ];
 
     return (
       <div className="App" id="outer-container">
          
         <div className="search">
+          <RightMenu right pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } styles={right}>
+            <News ticker={this.state.ticker}/>
+          </RightMenu>
           <LeftMenu isOpen={ this.state.menuOpen } pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } styles={left}>
             {
             options.map((key, i) => {
@@ -198,9 +201,7 @@ class App extends Component {
             })
             }
           </LeftMenu>
-          <RightMenu right pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } styles={right}>
-            <News ticker={this.state.ticker}/>
-          </RightMenu>
+          
           
             <h1>{this.state.title}</h1>
           
