@@ -284,7 +284,12 @@
   padding: 40px;
   margin: 5px;
   cursor: pointer;
-  background-color: white; }
+  background-color: white;
+  transition: all 0.5s; }
+
+.cards:hover {
+  background-color: #96D0D6;
+  transition: all 0.5s; }
 
 .search {
   position: fixed;
@@ -314,3 +319,6 @@
 .bm-menu::-webkit-scrollbar-thumb {
   background-color: #2DA2AE;
   border-radius: 50px; }
+
+button {
+  cursor: pointer; }

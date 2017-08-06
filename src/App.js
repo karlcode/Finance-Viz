@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import Select from 'react-select';
-
+import Search from './search.svg'
+import Newspaper from './newspaper.svg'
 // Be sure to include styles at some point, probably during your bootstrapping
 import 'react-select/dist/react-select.css';
 import { scaleRotate as LeftMenu, scaleRotate as RightMenu  } from 'react-burger-menu';
@@ -188,10 +189,10 @@ class App extends Component {
       <div className="App" id="outer-container">
          
         <div className="search">
-          <RightMenu right pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } styles={right}>
+          <RightMenu customBurgerIcon={ <img src={Newspaper} /> } right pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } styles={right}>
             <News ticker={this.state.ticker}/>
           </RightMenu>
-          <LeftMenu isOpen={ this.state.menuOpen } pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } styles={left}>
+          <LeftMenu customBurgerIcon={ <img src={Search} /> } isOpen={ this.state.menuOpen } pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } styles={left}>
             {
             options.map((key, i) => {
                 return  <div className="cards" key={key.value} onClick={this._clicked.bind(this, key)} >

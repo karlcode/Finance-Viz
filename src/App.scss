@@ -60,6 +60,11 @@ font-family: 'Source Sans Pro', sans-serif;
   margin: 5px;
   cursor: pointer;
   background-color: white;
+  transition: all 0.5s;
+}
+.cards:hover{
+  background-color:#96D0D6;
+  transition: all 0.5s;
 }
 .search{
   position: fixed;
@@ -98,3 +103,6 @@ font-family: 'Source Sans Pro', sans-serif;
   border-radius: 50px;
 }
 
+button {
+  cursor: pointer;
+}

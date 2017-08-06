@@ -1,10 +1,11 @@
 export default {
   bmBurgerButton: {
     position: 'fixed',
-    width: '36px',
-    height: '30px',
+    width: '50px',
+    height: '50px',
     right: '5px',
-    top: '50%'
+    top: '50%',
+    
   },
   bmBurgerBars: {
     background: '#373a47'
@@ -20,6 +21,13 @@ export default {
   bmItemList: {
     color: 'black',
     padding: '0.8em'
+  },
+  bmCrossButton: {
+    height: '24px',
+    width: '24px'
+  },
+  bmCross: {
+    background: '#bdc3c7'
   },
   bmOverlay: {
     background: 'rgba(0, 0, 0, 0.3)'
