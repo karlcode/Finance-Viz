@@ -182,7 +182,11 @@ class App extends Component {
   { value: 'INTC', label: 'Intel Corp.' },
   { value: 'CSCO', label: 'Cisco Systems Inc.' },
   { value: 'IBM', label: 'International Business Machines Corp.' },
-  { value: 'BIDU', label: 'Baidu Inc. ADS' }
+  { value: 'BIDU', label: 'Baidu Inc. ADS' },
+  { value: 'VOD', label: 'Vodafone AirTouch'},
+  { value: 'VZ', label: 'Verizon Communications Inc'},
+  { value: 'QCOM', label: 'QUALCOMM Incorporated'},
+  { value: 'EBAY', label: 'eBay Inc.'},
   ];
 
     return (
